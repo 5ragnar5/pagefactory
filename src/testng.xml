@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" > 
+<suite name="XTEE AUTOMATION DEMO" verbose="1" >
+	<listeners>
+		<listener class-name="ee.rz.testsamples.tests.testng.CustomTestListener" />
+	</listeners>
+	<test name="Adding and deleteing WSDL"   >
+	<!-- GRIDi jaoks saab siin öelda, millises node-is teste käivitama peaks
+	<parameter name="browser"  value="firefox"/>
+	<parameter name="platform"  value="VISTA"/>
+	<parameter name="hub-address"  value="http://localhost:4444/wd/hub"/> -->
+		<classes>
+			<class name="ee.rz.testsamples.tests.testng.SecurityServerTest">
+				<methods>
+					<include name="TestValidUserCredential" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
