@@ -13,20 +13,22 @@ public class LoggerHelper {
      * @return log4j logger
      */
 
-    public Logger setAppLogger(String foldername, String classname){
+       public Logger setAppLogger(String foldername, String folderdate, String classname){
         Logger rootLogger = Logger.getLogger(LoggerHelper.class.getCanonicalName());
-        Layout pattern = new PatternLayout("%d{MM-dd-yyyy HH:mm:ss,SSS} %-5p %c:%m%n");
-        String path = foldername +"/" + classname + ".log";
-        Appender newAppender = null;
+        Layout filePattern = new PatternLayout("%d{MM-dd-yyyy HH:mm:ss,SSS} %-5p %c:%m%n");
+        Layout consolePattern = new PatternLayout("%m%n");
+        String path = foldername + "/" + folderdate + "/" + classname + ".log";
+        Appender fileAppender = null, consoleAppender = null;
         try {
-            newAppender = new FileAppender(pattern, path, true);
+            fileAppender = new FileAppender(filePattern, path, true);
+            consoleAppender = new ConsoleAppender(consolePattern);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        rootLogger.setAdditivity(false);
+        rootLogger.setAdditivity(true);
         rootLogger.setLevel(Level.INFO);
-        rootLogger.addAppender(newAppender);
+        rootLogger.addAppender(fileAppender);
+        rootLogger.addAppender(consoleAppender);
         return rootLogger;
     }
 }
-

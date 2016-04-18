@@ -17,7 +17,7 @@ public class SecurityServerTest extends TestBase{
         //Custom log4j logger example
         LoggerHelper helper = new LoggerHelper();
         helper.setAppLogger("logs", "SecurityServerTest");
-        Logger logger = Logger.getLogger(LoggerHelper.class);
+        Logger logger = Logger.getLogger(SecurityServerTest.class);
 
         System.out.println("Starting test " + new Object() {}.getClass().getEnclosingMethod().getName());
 
