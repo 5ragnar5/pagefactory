@@ -4,6 +4,8 @@ import ee.rz.testsamples.logger.LoggerHelper;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class SecurityServerTest extends TestBase{
 
@@ -14,9 +16,11 @@ public class SecurityServerTest extends TestBase{
 	@Test
 	public void testValidUserCredential() throws InterruptedException	{
 
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+	
         //Custom log4j logger example
         LoggerHelper helper = new LoggerHelper();
-        helper.setAppLogger("logs", "SecurityServerTest");
+        helper.setAppLogger("logs",timeStamp,"SecurityServerTest");
         Logger logger = Logger.getLogger(SecurityServerTest.class);
 
         System.out.println("Starting test " + new Object() {}.getClass().getEnclosingMethod().getName());
